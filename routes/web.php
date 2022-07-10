@@ -14,13 +14,28 @@ use App\Models\Job;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// ALL JOB LISTINGS
 Route::get('/', function () {
     return view('jobs', [
         'heading' => 'Latest Jobs',
         'jobs' => Job::all()
     ]);
 });
+
+// SINGLE JOB LISTING
+Route::get('/jobs/{id}', function ($id) {
+    return view('job', [
+        'job' => Job::find($id)
+    ]);
+});
+
+
+
+
+
+
+
+
 
 // Route::get('/hello', function() {
 //     return response("<h1>Hello world</h1>", 200)

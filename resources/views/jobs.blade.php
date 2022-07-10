@@ -5,9 +5,13 @@
 @endif --}}
 
 @unless(count($jobs) == 0)
-@foreach($jobs as $jobs)
-  <h2>{{ $jobs['title'] }}</h2>
-  <p>{{ $jobs['description'] }}</p>
+@foreach($jobs as $job)
+  <h2>
+    <a href="/jobs/{{$job['id']}}">
+      {{ $job['title'] }}
+    </a>  
+  </h2>
+  <p>{{ $job['description'] }}</p>
 @endforeach
 
 @else
