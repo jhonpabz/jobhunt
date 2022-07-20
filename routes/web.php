@@ -17,7 +17,6 @@ use App\Models\Job;
 // ALL JOB LISTINGS
 Route::get('/', function () {
     return view('jobs', [
-        'heading' => 'Latest Jobs',
         'jobs' => Job::all()
     ]);
 });
