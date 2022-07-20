@@ -1,22 +1,16 @@
+@props(['tagsCsv'])
+
+
+@php
+    $tags = explode(',', $tagsCsv)
+@endphp
+
 <ul class="flex">
+  @foreach($tags as $tag)
   <li
       class="bg-black text-white rounded-xl px-3 py-1 mr-2"
   >
-      <a href="#">Laravel</a>
+      <a href="/?tag={{$tag}}">{{ $tag }}</a>
   </li>
-  <li
-      class="bg-black text-white rounded-xl px-3 py-1 mr-2"
-  >
-      <a href="#">API</a>
-  </li>
-  <li
-      class="bg-black text-white rounded-xl px-3 py-1 mr-2"
-  >
-      <a href="#">Backend</a>
-  </li>
-  <li
-      class="bg-black text-white rounded-xl px-3 py-1 mr-2"
-  >
-      <a href="#">React</a>
-  </li>
+  @endforeach
 </ul>
