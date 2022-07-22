@@ -1,24 +1,22 @@
-@extends('layout')
+<x-layout>
 
+    @include('partials._hero')
+    @include('partials._search')
 
-@section('content')
-@include('partials._hero')
-@include('partials._search')
+    <div
+    class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4"
+    >
 
-<div
-class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4"
->
+        @unless(count($jobs) == 0)
+        @foreach($jobs as $job)
+            <x-job-card :job="$job" />
+        @endforeach
 
-@unless(count($jobs) == 0)
-@foreach($jobs as $job)
-    <x-job-card :job="$job" />
-@endforeach
+        @else
+        <h1>No job listing found</h1>
+        @endunless
+    
 
-@else
-<h1>No job listing found</h1>
-@endunless
-   
+    </div>
 
-</div>
-
-@endsection
+</x-layout>
