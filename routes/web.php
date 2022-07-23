@@ -29,5 +29,11 @@ use App\Models\Job;
 // ALL JOB LISTINGS
 Route::get('/', [JobController::class, 'index']);
 
+// SHOW CREATE FORM
+Route::get('/jobs/create', [JobController::class, 'create']);
+
+// STORE JOB LISTING DATA
+Route::post('/jobs', [JobController::class, 'store']);
+
 // SINGLE JOB LISTING
 Route::get('/jobs/{job}', [JobController::class, 'show']);
