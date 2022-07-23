@@ -15,6 +15,17 @@ use App\Models\Job;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Common Resource Routes:
+// index - Show all listings
+// show - Show single listing
+// create - Show form to create new listing
+// store - Store new listing
+// edit - Show form to edit listing
+// update - Update listing
+// destroy - Delete listing  
+
+
 // ALL JOB LISTINGS
 Route::get('/', [JobController::class, 'index']);
 
