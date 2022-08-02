@@ -11,7 +11,7 @@ class JobController extends Controller
     // Show all job listings
     public function index() {
         return view('jobs.index', [
-            'jobs' => Job::latest()->filter(request(['tag', 'search']))->paginate(4)
+            'jobs' => Job::latest()->filter(request(['tag', 'search']))->paginate(4) //simplePaginate //FOR NEXT AND PREV BUTTON ONLY
         ]);
     }
 
@@ -38,6 +38,10 @@ class JobController extends Controller
             'tags' => 'required',
             'description' => 'required',
         ]);
+
+        if($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
 
         Job::create($formFields);
 
