@@ -74,4 +74,10 @@ class JobController extends Controller
 
         return back()->with('message', 'Job listing updated successfully!');
     }
+
+    // DELETE JOB LISTING
+    public function destroy(Job $job) {
+        $job->delete();
+        return redirect('/')->with('message', 'Job listing deleted successfully!');
+    }
 }
