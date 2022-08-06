@@ -35,5 +35,12 @@ Route::get('/jobs/create', [JobController::class, 'create']);
 // STORE JOB LISTING DATA
 Route::post('/jobs', [JobController::class, 'store']);
 
+// SHOW EDIT FORM
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
+
+// UPDATE job listing
+Route::put('/jobs/{job}', [JobController::class,
+'update']);
+
 // SINGLE JOB LISTING
 Route::get('/jobs/{job}', [JobController::class, 'show']);
