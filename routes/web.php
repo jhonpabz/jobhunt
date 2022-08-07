@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\JobController;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Job;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ use App\Models\Job;
 // Common Resource Routes:
 // index - Show all listings
 // show - Show single listing
-// create - Show form to create new listing
+// register/create - Show form to create new listing
 // store - Store new listing
 // edit - Show form to edit listing
 // update - Update listing
@@ -48,3 +49,6 @@ Route::delete('/jobs/{job}', [JobController::class,
 
 // SINGLE JOB LISTING
 Route::get('/jobs/{job}', [JobController::class, 'show']);
+
+// SHOW REGISTER/CREATE FORM
+Route::get('/register', [UserController::class, 'register']);
