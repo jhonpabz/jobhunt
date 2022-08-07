@@ -52,3 +52,6 @@ Route::get('/jobs/{job}', [JobController::class, 'show']);
 
 // SHOW REGISTER/CREATE FORM
 Route::get('/register', [UserController::class, 'register']);
+
+// CREATE NEW USER
+Route::post('/users', [UserController::class, 'store']);
