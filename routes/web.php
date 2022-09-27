@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,7 @@ Route::delete('/jobs/{job}', [JobController::class,
 Route::get('/jobs/{job}', [JobController::class, 'show']);
 
 // SHOW REGISTER/CREATE FORM
-Route::get('/register', [UserController::class, 'register']);
+Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 
 // CREATE NEW USER
 Route::post('/users', [UserController::class, 'store']);
@@ -60,7 +61,7 @@ Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout',[UserController::class, 'logout'])->middleware('auth');
 
 // SHOW LOGIN FORM
-Route::get('/login',[UserController::class, 'login'])->name('login');
+Route::get('/login',[UserController::class, 'login'])->name('login')->middleware('guest');
 
 // LOGIN USER
 Route::post('users/authenticate',[UserController::class, 'authenticate']);
