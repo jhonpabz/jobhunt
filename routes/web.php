@@ -31,21 +31,21 @@ use App\Http\Controllers\UserController;
 Route::get('/', [JobController::class, 'index']);
 
 // SHOW CREATE FORM
-Route::get('/jobs/create', [JobController::class, 'create']);
+Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
 
 // STORE JOB LISTING DATA
-Route::post('/jobs', [JobController::class, 'store']);
+Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
 
 // SHOW EDIT FORM
-Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware('auth');
 
 // UPDATE job listing
 Route::put('/jobs/{job}', [JobController::class,
-'update']);
+'update'])->middleware('auth');
 
 // DELETE job listing
 Route::delete('/jobs/{job}', [JobController::class,
-'destroy']);
+'destroy'])->middleware('auth');
 
 // SINGLE JOB LISTING
 Route::get('/jobs/{job}', [JobController::class, 'show']);
@@ -57,10 +57,10 @@ Route::get('/register', [UserController::class, 'register']);
 Route::post('/users', [UserController::class, 'store']);
 
 //Logout User
-Route::post('/logout',[UserController::class, 'logout']);
+Route::post('/logout',[UserController::class, 'logout'])->middleware('auth');
 
 // SHOW LOGIN FORM
-Route::get('/login',[UserController::class, 'login']);
+Route::get('/login',[UserController::class, 'login'])->name('login');
 
 // LOGIN USER
 Route::post('users/authenticate',[UserController::class, 'authenticate']);
