@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -15,14 +16,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $user = User::factory()->create([
+            'name' => 'Bob Bob',
+            'email' => 'bob@gmail.com'
+        ]);
 
-        Job::factory(7)->create();
+        Job::factory(7)->create([
+            'user_id' => $user->id
+        ]);
         // Job::create([
         //     'title' => 'Laravel Senior Developer', 
         //     'tags' => 'laravel, javascript',
