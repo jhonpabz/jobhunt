@@ -82,4 +82,9 @@ class JobController extends Controller
         $job->delete();
         return redirect('/')->with('message', 'Job listing deleted successfully!');
     }
+
+    // MANAGE JOB LISTING
+    public function manage() {
+        return view('jobs.manage', ['jobs' => auth()->user()->jobs()->get()]);
+    }
 }
