@@ -58,6 +58,12 @@ class JobController extends Controller
 
     //UPDATE JOB LISTING DATA
     public function update(Request $request, Job $job) {
+
+        // Make sure logged in user is owner
+        if($job->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
         $formFields = $request->validate([
             'title' => 'required',
             'company' => ['required'],
@@ -79,6 +85,12 @@ class JobController extends Controller
 
     // DELETE JOB LISTING
     public function destroy(Job $job) {
+        
+        // Make sure logged in user is owner
+        if($job->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+        
         $job->delete();
         return redirect('/')->with('message', 'Job listing deleted successfully!');
     }
